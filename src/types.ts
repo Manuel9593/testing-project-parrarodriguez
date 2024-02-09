@@ -16,3 +16,9 @@ export type Order = {
     user?: User
     lista: CardOrder[]
 }
+
+export type Total = {
+    subtotale: number,
+    iva: number,
+    totale: number
+}

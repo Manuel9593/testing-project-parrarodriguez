@@ -18,6 +18,71 @@ export const reset = () : void => {
 export const mockUser = (): void => {
     ordine.user = { cf: "GYTCUB98I66P720R", nome: "Manuel", cognome: "ocdnd", email: "cuwbsyuc@ucdsb.ud" }
 }
+export const mockOrderList = (list_case: number): void => {
+    switch(list_case) {
+        case 3:
+            ordine.lista = [
+                {
+                    card: {
+                        tipo: "cartaceo",
+                        taglio: 20
+                    },
+                    quantita: 4
+                },
+                {
+                    card: {
+                        tipo: "cartaceo",
+                        taglio: 50
+                    },
+                    quantita: 3
+                },
+                {
+                    card: {
+                        tipo: "digitale",
+                        taglio: 100
+                    },
+                    quantita: 1
+                }
+            ]
+            break;
+        case 2:
+            ordine.lista = [
+                {
+                    card: {
+                        tipo: "cartaceo",
+                        taglio: 20
+                    },
+                    quantita: 4
+                }
+            ]
+            break;
+        case 1:
+            ordine.lista = [
+                {
+                    card: {
+                        tipo: "cartaceo",
+                        taglio: 20
+                    },
+                    quantita: 4
+                },
+                {
+                    card: {
+                        tipo: "cartaceo",
+                        taglio: 20
+                    },
+                    quantita: 4
+                },
+                {
+                    card: {
+                        tipo: "cartaceo",
+                        taglio: 20
+                    },
+                    quantita: 4
+                }
+            ]
+            break;
+    }
+}
 
 export const newOrder = (user: User): Order | null => {
     user.cf = validateWithReturn((user.cf as string).trim(), cf_regexp)
@@ -39,4 +104,8 @@ export const addGiftCard = (cardOrder: CardOrder): Order | null => {
         return ordine
     }
     return null
+}
+
+export const getAmount = () => {
+
 }

@@ -1,7 +1,10 @@
 import { Order } from "../types"
-import { newOrder } from "./newOrder"
+import { newOrder, reset } from "./cardShop"
 
 describe('Order with credentials', () => {
+    afterEach(() => {
+        reset()
+    })
     it('Pass a user with (CF, name, surname, email)', () => {
         const user = {
             cf: "GGYPWD98I32A755P",
@@ -10,13 +13,14 @@ describe('Order with credentials', () => {
             email: "manuel.manuel@example.it"
         }
         const order = newOrder(user)
-        expect(order).toMatchObject<Order>({
-            ordine: []
-        })
+        expect(order).toMatchObject<Order>({user: user, lista: []})
     })
 })
 
 describe('Order with wrong or missing credentials', () => {
+    afterEach(() => {
+        reset()
+    })
     it('Pass a user with (CF)', () => {
         const user = {
             cf: "GGYPWD98I32A755P",
@@ -25,7 +29,7 @@ describe('Order with wrong or missing credentials', () => {
             email: ""
         }
         const order = newOrder(user)
-        expect(order).toBe(null)
+        expect(order).toBeNull()
     })
 
     it('Pass a user with (nome, cognome, email)', () => {
@@ -36,7 +40,7 @@ describe('Order with wrong or missing credentials', () => {
             email: "manuel.manuel@example.it"
         }
         const order = newOrder(user)
-        expect(order).toBe(null)
+        expect(order).toBeNull()
     })
     it('Pass with wrong CF', () => {
         const user = {

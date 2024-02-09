@@ -61,12 +61,12 @@ Fare un fork di questo repository
 
 ### Funzione addGiftcard
 
-- [ ] Creare i test per la funzione addGiftcard se possibile per happy path, special cases, edge cases e eccezioni.
-- [ ] Eseguire i test che falliscono
-- [ ] Effettuare la commit e la relativa push
-- [ ] Implementare la funzione addGiftcard
-- [ ] Eseguire i test che passano
-- [ ] Effettuare la commit e la relativa push
+- [x] Creare i test per la funzione addGiftcard se possibile per happy path, special cases, edge cases e eccezioni.
+- [x] Eseguire i test che falliscono
+- [x] Effettuare la commit e la relativa push
+- [x] Implementare la funzione addGiftcard
+- [x] Eseguire i test che passano
+- [x] Effettuare la commit e la relativa push
 
 ### Funzione getAmount
 

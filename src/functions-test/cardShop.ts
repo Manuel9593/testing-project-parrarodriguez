@@ -1,4 +1,5 @@
 import { CardOrder, Order, User } from "../types";
+import isEqual from "lodash.isequal";
 
 const cf_regexp = /^([A-Z]{6})(\d{2})([A-Z])(\d{2})([A-Z])(\d{3})([A-Z])$/i
 const email_regexp = /^([a-z.-]+)@(([a-z-]+)([.]([a-z-]+))+)$/
@@ -32,8 +33,9 @@ export const newOrder = (user: User): Order | null => {
 
 export const addGiftCard = (cardOrder: CardOrder): Order | null => {
     if (ordine.user) {
-        const checkCardIndex : number = ordine.lista.findIndex((value) => value.card == cardOrder.card)
-        checkCardIndex >= 0 ? ordine.lista[checkCardIndex].quantita += cardOrder.quantita : ordine.lista.push(cardOrder)
+        const checkCardIndex : number = ordine.lista.findIndex((value) => isEqual(value.card, cardOrder.card))
+        checkCardIndex >= 0 ? (ordine.lista[checkCardIndex].quantita += cardOrder.quantita) : ordine.lista.push(cardOrder)
+        console.debug(checkCardIndex)
         return ordine
     }
     return null

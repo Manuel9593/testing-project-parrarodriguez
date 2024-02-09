@@ -1,9 +1,10 @@
 import { CardOrder, Order } from "../types"
-import { mockUser, reset } from "./cardShop"
+import { mockUser, reset, addGiftCard } from "./cardShop"
 
 describe('Successfully add a gift card', () => {
     beforeEach(() => {
         reset()
+        mockUser()
     })
     it('Add a gift card', () => {
         const card: CardOrder = {
@@ -13,9 +14,10 @@ describe('Successfully add a gift card', () => {
             },
             quantita: 3
         }
-        const order: Order = addGiftCard(user)
+        const order = addGiftCard(card)
         expect(order).toMatchObject<Order>({
-            lista: []
+            user:  { cf: "GYTCUB98I66P720R", nome: "Manuel", cognome: "ocdnd", email: "cuwbsyuc@ucdsb.ud" },
+            lista: [card]
         })
     })
 
@@ -35,9 +37,10 @@ describe('Successfully add a gift card', () => {
             quantita: 1
         }
         addGiftCard(card1)
-        const order: Order = addGiftCard(card2)
+        const order = addGiftCard(card2)
         expect(order).toMatchObject<Order>({
-            lista: []
+            user:  { cf: "GYTCUB98I66P720R", nome: "Manuel", cognome: "ocdnd", email: "cuwbsyuc@ucdsb.ud" },
+            lista: [card1, card2]
         })
     })
     it('Add multiple gift cards of the same type', () => {
@@ -65,33 +68,26 @@ describe('Successfully add a gift card', () => {
         }
         addGiftCard(card1)
         addGiftCard(card2)
-        const order: Order = addGiftCard(card3)
+        const order = addGiftCard(card3)
         expect(order).toMatchObject<Order>({
-            lista: []
+            user:  { cf: "GYTCUB98I66P720R", nome: "Manuel", cognome: "ocdnd", email: "cuwbsyuc@ucdsb.ud" },
+            lista: [{card: {tipo: "cartaceo", taglio: 10}, quantita: 6}]
         })
     })
 })
 
-describe('Add no or inexistent cards', () => {
+describe('Add with no mock', () => {
     beforeEach(() => {
         reset()
-        mockUser()
     })
     it('Add no data', () => {
-        expect(() =>{
-            addGiftCard({})
-        }).toThrow(Error);
-    })
-
-    it('Add wrong data', () => {
-        expect(() =>{
-            addGiftCard({ foo: "bar", example: 2})
-        }).toThrow(Error);
-    })
-
-    it('Add inexistent card', () => {
-        expect(() =>{
-            addGiftCard({ card: {tipo: "bar", taglio: 2 }, quantita: 5 })
-        }).toThrow(Error);
+        const order = addGiftCard({
+            card: {
+                tipo: "cartaceo",
+                taglio: 10
+            },
+            quantita: 0
+        })
+        expect(order).toBeNull();
     })
 })

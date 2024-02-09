@@ -1,5 +1,5 @@
 import { Order } from "../types"
-import { expectTypeOf } from 'expect-type'
+import { newOrder } from "./newOrder"
 
 describe('Order with credentials', () => {
     it('Pass a user with (CF, name, surname, email)', () => {
@@ -7,7 +7,7 @@ describe('Order with credentials', () => {
             cf: "GGYPWD98I32A755P",
             nome: "Manuel",
             cognome: "Parra Rodriguez",
-            email: "manuel.manuel@example.it",
+            email: "manuel.manuel@example.it"
         }
         const order = newOrder(user)
         expect(order).toMatchObject<Order>({
@@ -20,19 +20,23 @@ describe('Order with wrong or missing credentials', () => {
     it('Pass a user with (CF)', () => {
         const user = {
             cf: "GGYPWD98I32A755P",
+            nome: "",
+            cognome: "",
+            email: ""
         }
         const order = newOrder(user)
-        console.debug("Order", order)
-        expectTypeOf(order).toMatchTypeOf<Order>(null)
+        expect(order).toBe(null)
     })
 
     it('Pass a user with (nome, cognome, email)', () => {
         const user = {
-            cf: "GGYPWD98I32A755P",
+            cf: "",
+            nome: "Manuel",
+            cognome: "Parra",
+            email: "manuel.manuel@example.it"
         }
         const order = newOrder(user)
-        console.debug("Order", order)
-        expectTypeOf(order).toMatchTypeOf<Order>(null)
+        expect(order).toBe(null)
     })
     it('Pass with wrong CF', () => {
         const user = {
@@ -42,20 +46,16 @@ describe('Order with wrong or missing credentials', () => {
             email: "manuel.manuel@example.it",
         }
         const order = newOrder(user)
-        expect(order).toMatchObject<Order>({
-            ordine: []
-        })
+        expect(order).toBeNull()
     })
     it('Pass with wrong email', () => {
         const user = {
-            cf: "GGYPWD98A755P",
+            cf: "GGYPWD98I32A755P",
             nome: "Manuel",
             cognome: "Parra Rodriguez",
             email: "manuel.manuel@example",
         }
         const order = newOrder(user)
-        expect(order).toMatchObject<Order>({
-            ordine: []
-        })
+        expect(order).toBeNull()
     })
 })

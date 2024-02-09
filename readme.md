@@ -8,7 +8,7 @@ Di seguito le specifiche funzionali:
 - Per richeidere la giftcard occorre imputare i seguenti dati: tipologia (digitale/cartacea), taglio (10/20/50/100), quantità.
 - Non deve essere possibile richiedere nello stesso ordine più volte lo stesso taglio e tipologia di giftcard. In alternativa occorre aggiornare la quantità.
 
-# Funsioni da sviluppare
+# Funzioni da sviluppare
 
 ## Funzione newOrder
 
@@ -52,29 +52,29 @@ Fare un fork di questo repository
 
 ### Funzione newOrder
 
-- [] Creare i test per la funzione newOrder se possibile per happy path, special cases, edge cases e eccezioni.
-- [] Eseguire i test che falliscono
-- [] Effettuare la commit e la relativa push
-- [] Implementare la funzione newOrder
-- [] Eseguire i test che passano
-- [] Effettuare la commit e la relativa push
+- [ ] Creare i test per la funzione newOrder se possibile per happy path, special cases, edge cases e eccezioni.
+- [ ] Eseguire i test che falliscono
+- [ ] Effettuare la commit e la relativa push
+- [ ] Implementare la funzione newOrder
+- [ ] Eseguire i test che passano
+- [ ] Effettuare la commit e la relativa push
 
 ### Funzione addGiftcard
 
-- [] Creare i test per la funzione addGiftcard se possibile per happy path, special cases, edge cases e eccezioni.
-- [] Eseguire i test che falliscono
-- [] Effettuare la commit e la relativa push
-- [] Implementare la funzione addGiftcard
-- [] Eseguire i test che passano
-- [] Effettuare la commit e la relativa push
+- [ ] Creare i test per la funzione addGiftcard se possibile per happy path, special cases, edge cases e eccezioni.
+- [ ] Eseguire i test che falliscono
+- [ ] Effettuare la commit e la relativa push
+- [ ] Implementare la funzione addGiftcard
+- [ ] Eseguire i test che passano
+- [ ] Effettuare la commit e la relativa push
 
 ### Funzione getAmount
 
-- [] Creare i test per la funzione getAmount se possibile per happy path, special cases, edge cases e eccezioni.
-- [] Eseguire i test che falliscono
-- [] Effettuare la commit e la relativa push
-- [] Implementare la funzione getAmount
-- [] Eseguire i test che passano
-- [] Effettuare la commit e la relativa push
+- [ ] Creare i test per la funzione getAmount se possibile per happy path, special cases, edge cases e eccezioni.
+- [ ] Eseguire i test che falliscono
+- [ ] Effettuare la commit e la relativa push
+- [ ] Implementare la funzione getAmount
+- [ ] Eseguire i test che passano
+- [ ] Effettuare la commit e la relativa push
 
 **IMPORTANTE: se durante lo sviluppo emerge l'esigenza di creare altre funzioni per rendere il codice più modulare e leggibile occorre definire, sviluppare ed eseguire i relativi unit test.**

@@ -2,7 +2,7 @@ import { Order } from "../types"
 import { newOrder, reset } from "./cardShop"
 
 describe('Order with credentials', () => {
-    afterEach(() => {
+    beforeEach(() => {
         reset()
     })
     it('Pass a user with (CF, name, surname, email)', () => {
@@ -18,7 +18,7 @@ describe('Order with credentials', () => {
 })
 
 describe('Order with wrong or missing credentials', () => {
-    afterEach(() => {
+    beforeEach(() => {
         reset()
     })
     it('Pass a user with (CF)', () => {

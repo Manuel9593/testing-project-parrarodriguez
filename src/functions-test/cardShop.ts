@@ -1,4 +1,4 @@
-import { CardOrder, Order, User } from "../types";
+import { CardOrder, Order, Total, User } from "../types";
 import isEqual from "lodash.isequal";
 
 const cf_regexp = /^([A-Z]{6})(\d{2})([A-Z])(\d{2})([A-Z])(\d{3})([A-Z])$/i
@@ -106,6 +106,14 @@ export const addGiftCard = (cardOrder: CardOrder): Order | null => {
     return null
 }
 
-export const getAmount = () => {
-
+export const getAmount = () : Total => {
+    if(!ordine.user) ordine.lista.length = 0
+    const subtotale = ordine.lista.reduce((accumulate, value) => accumulate + value.quantita*value.card.taglio, 0);
+    const iva = subtotale * 22 / 100
+    const totale = subtotale + iva
+    return {
+        subtotale: subtotale,
+        iva: iva,
+        totale: totale
+    }
 }

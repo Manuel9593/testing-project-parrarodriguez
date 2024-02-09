@@ -100,7 +100,6 @@ export const addGiftCard = (cardOrder: CardOrder): Order | null => {
     if (ordine.user) {
         const checkCardIndex : number = ordine.lista.findIndex((value) => isEqual(value.card, cardOrder.card))
         checkCardIndex >= 0 ? (ordine.lista[checkCardIndex].quantita += cardOrder.quantita) : ordine.lista.push(cardOrder)
-        console.debug(checkCardIndex)
         return ordine
     }
     return null
